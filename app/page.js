@@ -72,7 +72,7 @@ function InfoPanel({ viewMode, meshCount }) {
 export default function Home() {
   const [viewMode, setViewMode] = useState('all');
   const [meshCount, setMeshCount] = useState(0);
-  const [isPanelOpen, setIsPanelOpen] = useState(true); // State for visibility
+  const [isPanelOpen, setIsPanelOpen] = useState(false); 
 
   const buttons = [
     { id: 'all', label: 'All Models', emoji: '🔍', gradient: 'from-blue-600 to-blue-700' },
