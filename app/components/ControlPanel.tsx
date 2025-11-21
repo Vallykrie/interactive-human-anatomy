@@ -1,7 +1,15 @@
 'use client';
 
-export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode }) {
-    const buttons = [
+type ViewMode = 'all' | 'skin' | 'muscle' | 'skeleton';
+
+interface ControlPanelProps {
+    setIsPanelOpen: (isOpen: boolean) => void;
+    viewMode: ViewMode;
+    setViewMode: (mode: ViewMode) => void;
+}
+
+export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode }: ControlPanelProps) {
+    const buttons: { id: ViewMode; label: string; emoji: string; gradient: string }[] = [
         { id: 'all', label: 'All Models', emoji: '🔍', gradient: 'from-blue-600 to-blue-700' },
         { id: 'skin', label: 'Skin/Body', emoji: '👤', gradient: 'from-pink-600 to-pink-700' },
         { id: 'muscle', label: 'Muscles', emoji: '💪', gradient: 'from-red-600 to-red-700' },

@@ -2,12 +2,20 @@
 
 import { useGLTF } from '@react-three/drei';
 import { useEffect } from 'react';
+import { Group } from 'three';
 
-export default function AnatomyModel({ viewMode, setMeshCount }) {
-    const all = useGLTF('/models/female-anatomy.glb');
-    const skin = useGLTF('/models/skin.glb');
-    const muscle = useGLTF('/models/muscle.glb');
-    const skeleton = useGLTF('/models/skeleton.glb');
+type ViewMode = 'all' | 'skin' | 'muscle' | 'skeleton';
+
+interface AnatomyModelProps {
+    viewMode: ViewMode;
+    setMeshCount: (count: number) => void;
+}
+
+export default function AnatomyModel({ viewMode, setMeshCount }: AnatomyModelProps) {
+    const all = useGLTF('/models/female-anatomy.glb') as unknown as { scene: Group };
+    const skin = useGLTF('/models/skin.glb') as unknown as { scene: Group };
+    const muscle = useGLTF('/models/muscle.glb') as unknown as { scene: Group };
+    const skeleton = useGLTF('/models/skeleton.glb') as unknown as { scene: Group };
 
     const offset = .20999999999999;
 

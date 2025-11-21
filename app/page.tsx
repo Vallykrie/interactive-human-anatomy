@@ -9,13 +9,15 @@ import InfoPanel from './components/InfoPanel';
 import ControlPanel from './components/ControlPanel';
 import MinimizedButton from './components/MinimizedButton';
 
+type ViewMode = 'all' | 'skin' | 'muscle' | 'skeleton';
+
 export default function Home() {
-  const [viewMode, setViewMode] = useState('all');
-  const [meshCount, setMeshCount] = useState(0);
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<ViewMode>('all');
+  const [meshCount, setMeshCount] = useState<number>(0);
+  const [isPanelOpen, setIsPanelOpen] = useState<boolean>(false);
 
   return (
-    <main className="relative w-full h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
+    <main className="relative w-full h-screen bg-linear-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
       {!isPanelOpen && (
         <MinimizedButton setIsPanelOpen={setIsPanelOpen} />
       )}

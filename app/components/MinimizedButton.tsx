@@ -1,6 +1,10 @@
 'use client';
 
-export default function MinimizedButton({ setIsPanelOpen }) {
+interface MinimizedButtonProps {
+    setIsPanelOpen: (isOpen: boolean) => void;
+}
+
+export default function MinimizedButton({ setIsPanelOpen }: MinimizedButtonProps) {
     return (
         <button
             onClick={() => setIsPanelOpen(true)}

@@ -1,6 +1,13 @@
 'use client';
 
-export default function InfoPanel({ viewMode, meshCount }) {
+type ViewMode = 'all' | 'skin' | 'muscle' | 'skeleton';
+
+interface InfoPanelProps {
+    viewMode: ViewMode;
+    meshCount: number;
+}
+
+export default function InfoPanel({ viewMode, meshCount }: InfoPanelProps) {
     const getModelInfo = () => {
         switch (viewMode) {
             case 'skin': return { emoji: '👤', name: 'Skin/Body', color: 'bg-pink-500' };
