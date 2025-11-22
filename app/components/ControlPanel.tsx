@@ -8,14 +8,16 @@ interface ControlPanelProps {
     setViewMode: (mode: ViewMode) => void;
     showDetail: boolean;
     setShowDetail: (show: boolean) => void;
+    isBloom: boolean;
+    setIsBloom: (isBloom: boolean) => void;
 }
 
-export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode, showDetail, setShowDetail }: ControlPanelProps) {
+export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode, showDetail, setShowDetail, isBloom, setIsBloom }: ControlPanelProps) {
     const buttons: { id: ViewMode; label: string; emoji: string; gradient: string }[] = [
         { id: 'all', label: 'All Models', emoji: '🔍', gradient: 'from-blue-600 to-blue-700' },
-        { id: 'skin', label: 'Skin/Body', emoji: '👤', gradient: 'from-pink-600 to-pink-700' },
+        { id: 'skin', label: 'Skin/Body', emoji: '👤', gradient: 'from-yellow-600 to-yellow-700' },
         { id: 'muscle', label: 'Muscles', emoji: '💪', gradient: 'from-red-600 to-red-700' },
-        { id: 'skeleton', label: 'Skeleton', emoji: '🦴', gradient: 'from-gray-600 to-gray-700' },
+        { id: 'skeleton', label: 'Skeleton', emoji: '🦴', gradient: 'from-green-600 to-green-700' },
     ];
 
     return (
@@ -49,23 +51,42 @@ export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode, sh
                     </button>
                 </div>
 
-                {/* Detail Toggle */}
-                {/* Detail Toggle */}
-                <label className="mb-4 p-4 bg-white/5 rounded-xl border border-white/5 flex items-center justify-between cursor-pointer group hover:bg-white/10 transition-colors">
-                    <span className="text-sm font-medium text-gray-200 flex items-center gap-3">
-                        <span className="text-lg">📝</span> 
-                        <span className="group-hover:text-white transition-colors">Show Details</span>
-                    </span>
-                    <div className="relative">
-                        <input 
-                            type="checkbox" 
-                            className="sr-only peer"
-                            checked={showDetail}
-                            onChange={(e) => setShowDetail(e.target.checked)}
-                        />
-                        <div className="w-12 h-7 bg-gray-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600 shadow-inner"></div>
-                    </div>
-                </label>
+                {/* Toggles Container */}
+                <div className="space-y-3 mb-4">
+                    {/* Detail Toggle */}
+                    <label className="p-4 bg-white/5 rounded-xl border border-white/5 flex items-center justify-between cursor-pointer group hover:bg-white/10 transition-colors">
+                        <span className="text-sm font-medium text-gray-200 flex items-center gap-3">
+                            <span className="text-lg">📝</span> 
+                            <span className="group-hover:text-white transition-colors">Show Details</span>
+                        </span>
+                        <div className="relative">
+                            <input 
+                                type="checkbox" 
+                                className="sr-only peer"
+                                checked={showDetail}
+                                onChange={(e) => setShowDetail(e.target.checked)}
+                            />
+                            <div className="w-12 h-7 bg-gray-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600 shadow-inner"></div>
+                        </div>
+                    </label>
+
+                    {/* Bloom Effect Toggle */}
+                    <label className="p-4 bg-white/5 rounded-xl border border-white/5 flex items-center justify-between cursor-pointer group hover:bg-white/10 transition-colors">
+                        <span className="text-sm font-medium text-gray-200 flex items-center gap-3">
+                            <span className="text-lg">✨</span> 
+                            <span className="group-hover:text-white transition-colors">Bloom Effect</span>
+                        </span>
+                        <div className="relative">
+                            <input 
+                                type="checkbox" 
+                                className="sr-only peer"
+                                checked={isBloom}
+                                onChange={(e) => setIsBloom(e.target.checked)}
+                            />
+                            <div className="w-12 h-7 bg-gray-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-purple-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600 shadow-inner"></div>
+                        </div>
+                    </label>
+                </div>
 
                 {/* Buttons */}
                 <div className="space-y-2">
@@ -75,7 +96,7 @@ export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode, sh
                             onClick={() => setViewMode(btn.id)}
                             className={`w-full px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-300 transform ${viewMode === btn.id
                                 ? `bg-linear-to-r ${btn.gradient} text-white shadow-lg scale-[1.02] ring-1 ring-white/50`
-                                : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700 hover:text-white border border-transparent hover:border-white/10'
+                                : 'bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-transparent hover:border-white/10'
                                 }`}
                         >
                             <div className="flex items-center justify-between">

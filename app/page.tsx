@@ -2,7 +2,7 @@
 
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
-import { EffectComposer, SSAO, Bloom, ToneMapping } from '@react-three/postprocessing';
+import { EffectComposer, Bloom, ToneMapping } from '@react-three/postprocessing';
 import { Suspense, useState } from 'react';
 import AnatomyModel from './components/AnatomyModel';
 import Loader from './components/Loader';
@@ -17,6 +17,7 @@ export default function Home() {
   const [meshCount, setMeshCount] = useState<number>(0);
   const [isPanelOpen, setIsPanelOpen] = useState<boolean>(false);
   const [showDetail, setShowDetail] = useState<boolean>(false);
+  const [isBloom, setIsBloom] = useState<boolean>(false);
 
   return (
     <main className="relative w-full h-screen bg-[radial-gradient(circle_at_center,#1e293b_0%,#000000_100%)] overflow-hidden">
@@ -30,6 +31,8 @@ export default function Home() {
           setViewMode={setViewMode}
           showDetail={showDetail}
           setShowDetail={setShowDetail}
+          isBloom={isBloom}
+          setIsBloom={setIsBloom}
         />
       )}
       <InfoPanel viewMode={viewMode} meshCount={meshCount} />
@@ -47,11 +50,16 @@ export default function Home() {
           
           <AnatomyModel viewMode={viewMode} setMeshCount={setMeshCount} showDetail={showDetail} />
           
-          <EffectComposer enableNormalPass>
-            <SSAO radius={0.1} intensity={10} luminanceInfluence={0.5} color={undefined} />
-            <Bloom luminanceThreshold={1} mipmapBlur intensity={0.5} radius={0.5} />
-            <ToneMapping />
-          </EffectComposer>
+          {isBloom ? (
+             <EffectComposer>
+                <Bloom luminanceThreshold={1} mipmapBlur intensity={0.5} radius={0.5} />
+                <ToneMapping />
+             </EffectComposer>
+          ) : (
+            <EffectComposer>
+              <ToneMapping />
+            </EffectComposer>
+          )}
 
           <OrbitControls
             target={[0, .3, 1]}
