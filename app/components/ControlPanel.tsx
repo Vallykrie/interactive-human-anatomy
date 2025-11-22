@@ -50,19 +50,22 @@ export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode, sh
                 </div>
 
                 {/* Detail Toggle */}
-                <div className="mb-4 p-3 bg-white/5 rounded-xl border border-white/5 flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-200 flex items-center gap-2">
-                        <span>📝</span> Show Details
+                {/* Detail Toggle */}
+                <label className="mb-4 p-4 bg-white/5 rounded-xl border border-white/5 flex items-center justify-between cursor-pointer group hover:bg-white/10 transition-colors">
+                    <span className="text-sm font-medium text-gray-200 flex items-center gap-3">
+                        <span className="text-lg">📝</span> 
+                        <span className="group-hover:text-white transition-colors">Show Details</span>
                     </span>
-                    <button
-                        onClick={() => setShowDetail(!showDetail)}
-                        className={`relative w-11 h-6 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${showDetail ? 'bg-blue-600' : 'bg-gray-600'}`}
-                    >
-                        <span
-                            className={`inline-block w-4 h-4 transform bg-white rounded-full transition-transform duration-300 ${showDetail ? 'translate-x-6' : 'translate-x-1'}`}
+                    <div className="relative">
+                        <input 
+                            type="checkbox" 
+                            className="sr-only peer"
+                            checked={showDetail}
+                            onChange={(e) => setShowDetail(e.target.checked)}
                         />
-                    </button>
-                </div>
+                        <div className="w-12 h-7 bg-gray-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600 shadow-inner"></div>
+                    </div>
+                </label>
 
                 {/* Buttons */}
                 <div className="space-y-2">
