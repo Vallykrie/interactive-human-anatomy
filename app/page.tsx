@@ -44,7 +44,7 @@ export default function Home() {
           
           <AnatomyModel viewMode={viewMode} setMeshCount={setMeshCount} />
           
-          <EffectComposer>
+          <EffectComposer enableNormalPass>
             <SSAO radius={0.1} intensity={10} luminanceInfluence={0.5} color={undefined} />
             <Bloom luminanceThreshold={1} mipmapBlur intensity={0.5} radius={0.5} />
             <ToneMapping />
