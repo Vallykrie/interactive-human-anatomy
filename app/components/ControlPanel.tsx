@@ -80,7 +80,7 @@ export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode }: 
                     </p>
                     <div className="space-y-3">
                         <div className="flex items-center gap-3 text-xs text-gray-300">
-                            <div className="w-6 h-6 rounded bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+                            <div className="w-6 h-6 rounded bg-blue-500/20 flex items-center justify-center shrink-0">
                                 <svg className="w-3 h-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                                 </svg>
@@ -88,7 +88,7 @@ export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode }: 
                             <span><strong>Drag</strong> to rotate</span>
                         </div>
                         <div className="flex items-center gap-3 text-xs text-gray-300">
-                            <div className="w-6 h-6 rounded bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                            <div className="w-6 h-6 rounded bg-purple-500/20 flex items-center justify-center shrink-0">
                                 <svg className="w-3 h-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10h-2m0 0H9m2 0v2m0-2V8" />
                                 </svg>
@@ -96,7 +96,7 @@ export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode }: 
                             <span><strong>Scroll</strong> to zoom</span>
                         </div>
                         <div className="flex items-center gap-3 text-xs text-gray-300">
-                            <div className="w-6 h-6 rounded bg-green-500/20 flex items-center justify-center flex-shrink-0">
+                            <div className="w-6 h-6 rounded bg-green-500/20 flex items-center justify-center shrink-0">
                                 <svg className="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
                                 </svg>
