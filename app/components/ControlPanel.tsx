@@ -6,9 +6,11 @@ interface ControlPanelProps {
     setIsPanelOpen: (isOpen: boolean) => void;
     viewMode: ViewMode;
     setViewMode: (mode: ViewMode) => void;
+    showDetail: boolean;
+    setShowDetail: (show: boolean) => void;
 }
 
-export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode }: ControlPanelProps) {
+export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode, showDetail, setShowDetail }: ControlPanelProps) {
     const buttons: { id: ViewMode; label: string; emoji: string; gradient: string }[] = [
         { id: 'all', label: 'All Models', emoji: '🔍', gradient: 'from-blue-600 to-blue-700' },
         { id: 'skin', label: 'Skin/Body', emoji: '👤', gradient: 'from-pink-600 to-pink-700' },
@@ -44,6 +46,21 @@ export default function ControlPanel({ setIsPanelOpen, viewMode, setViewMode }: 
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
+                    </button>
+                </div>
+
+                {/* Detail Toggle */}
+                <div className="mb-4 p-3 bg-white/5 rounded-xl border border-white/5 flex items-center justify-between">
+                    <span className="text-sm font-medium text-gray-200 flex items-center gap-2">
+                        <span>📝</span> Show Details
+                    </span>
+                    <button
+                        onClick={() => setShowDetail(!showDetail)}
+                        className={`relative w-11 h-6 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${showDetail ? 'bg-blue-600' : 'bg-gray-600'}`}
+                    >
+                        <span
+                            className={`inline-block w-4 h-4 transform bg-white rounded-full transition-transform duration-300 ${showDetail ? 'translate-x-6' : 'translate-x-1'}`}
+                        />
                     </button>
                 </div>
 

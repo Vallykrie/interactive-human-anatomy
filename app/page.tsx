@@ -16,6 +16,7 @@ export default function Home() {
   const [viewMode, setViewMode] = useState<ViewMode>('all');
   const [meshCount, setMeshCount] = useState<number>(0);
   const [isPanelOpen, setIsPanelOpen] = useState<boolean>(false);
+  const [showDetail, setShowDetail] = useState<boolean>(false);
 
   return (
     <main className="relative w-full h-screen bg-[radial-gradient(circle_at_center,#1e293b_0%,#000000_100%)] overflow-hidden">
@@ -27,6 +28,8 @@ export default function Home() {
           setIsPanelOpen={setIsPanelOpen}
           viewMode={viewMode}
           setViewMode={setViewMode}
+          showDetail={showDetail}
+          setShowDetail={setShowDetail}
         />
       )}
       <InfoPanel viewMode={viewMode} meshCount={meshCount} />
@@ -42,7 +45,7 @@ export default function Home() {
           <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow shadow-bias={-0.0001} />
           <pointLight position={[-10, -10, -10]} intensity={0.5} color="#204060" />
           
-          <AnatomyModel viewMode={viewMode} setMeshCount={setMeshCount} />
+          <AnatomyModel viewMode={viewMode} setMeshCount={setMeshCount} showDetail={showDetail} />
           
           <EffectComposer enableNormalPass>
             <SSAO radius={0.1} intensity={10} luminanceInfluence={0.5} color={undefined} />
